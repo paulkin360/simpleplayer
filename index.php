@@ -7,7 +7,7 @@
  *
  */
 $fpath = 'music';
-$rand_num = 8;
+$rand_num = 9;
 //检查refer，禁止连续播放相同都歌曲
 if(isset($_SERVER['QUERY_STRING'])&&strlen($_SERVER['QUERY_STRING'])&&(!strpos($_SERVER['HTTP_REFERER'],$_SERVER['QUERY_STRING'])===FALSE))  {
   	unset($_GET['song']);
@@ -51,8 +51,24 @@ while(count($arr_may)<$real_randnum){
 
 echo "<html>
 	<head>
-	<title>我的八音盒</title>
+	<title>".$thissong."--我的八音盒</title>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js'></script>
 	<script type='text/javascript'>
+$(document).keyup(function(e){
+	var key =  e.which;
+	if(key == 32){
+		var song = $('#media').get(0);
+		if(song.paused)
+		{
+			song.play();
+}
+else
+{
+	song.pause();
+
+}
+					}
+	});
 
   </script>
 	</head>
@@ -69,7 +85,7 @@ echo ' <audio onended="document.location.reload()" id="media" controls="controls
 	Your browser does not support the audio element.
 	</audio>
 	';
-echo '<a href="'.$_SERVER['SCRIPT_NAME'].'">随便换一首</a><br><br><br><br>';
+echo '<a href="'.$_SERVER['SCRIPT_NAME'].'"><img src=./next.jpg></a><br><br><br><br>';
 echo "或许也可以听听:<br><br><br>";
 
 foreach($arr_may as $k =>$song){
