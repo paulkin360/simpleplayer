@@ -1,5 +1,5 @@
 <?php
-/* bjzhush@gmail.com  2012/09/01 
+/* paulkinobunga@yahoo.com  2013/01/21 
  * Read a folder of songs, random play, and recommended a number of first for on-demand
  * If the total number of songs is less than the number of random songs is recommended total song number recommended songs do not repeat
  * File exists judge, such as a song file does not exist you will be prompted
