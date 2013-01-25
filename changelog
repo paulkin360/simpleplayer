@@ -1,7 +1,16 @@
-2012/09/21  v0.2
-1.修正title为动态
-2.修改下一首歌为 箭头 （图片）
-3，增加空格 暂停/继续播放
+2013/01/21 v0.1
+Forked the chinese version of this same script (Translated and added functionality)
 
-2012/09/02 v0.1
-完成基本主要功能
+1. Complete the basic functions
+
+2. Add a space to pause / resume playback
+
+3. Amend title for dynamic file
+
+4. Add Next and Previous links for the audio files.
+
+
+
+
+
+
