@@ -1,14 +1,14 @@
 <?php
 /* bjzhush@gmail.com  2012/09/01 
- * *读取某文件夹下的歌曲，随机播放，并推荐若干首可以供点播
- * 若总歌曲数少于随机歌曲数则推荐总歌曲数个，保证了推荐的歌曲不重复
- * 对于文件是否存在做了判断，如歌曲文件不存在则会有提示
- * 随便写了下，没有支持子目录,用了is_file排除了子目录
+ * Read a folder of songs, random play, and recommended a number of first for on-demand
+ * If the total number of songs is less than the number of random songs is recommended total song number recommended songs do not repeat
+ * File exists judge, such as a song file does not exist you will be prompted
+ * Casually write, there is no support for subdirectories, use is_file exclude subdirectories
  *
  */
 $fpath = 'music';
 $rand_num = 9;
-//检查refer，禁止连续播放相同都歌曲
+// Check the referer, prohibit the same continuous play all songs)
 if(isset($_SERVER['QUERY_STRING'])&&strlen($_SERVER['QUERY_STRING'])&&(!strpos($_SERVER['HTTP_REFERER'],$_SERVER['QUERY_STRING'])===FALSE))  {
   	unset($_GET['song']);
 }
@@ -51,7 +51,7 @@ while(count($arr_may)<$real_randnum){
 
 echo "<html>
 	<head>
-	<title>".$thissong."--我的八音盒</title>
+	<title>".$thissong."--My Music Box</title>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js'></script>
 	<script type='text/javascript'>
 $(document).keyup(function(e){
@@ -75,10 +75,12 @@ else
 	<body>
 	<br> <br> <br> <br> <br> <br>
 	";
-echo '<div align="center">现在播放的是：'.$thissong;
+echo '<div align="center">Now Playing：'.$thissong;
 echo "<br><br>";
 
 echo $alertmsg;
+
+echo '<a href="'.$_SERVER['SCRIPT_NAME'].'"><img src=./previous.jpg></a><br><br><br><br>';
 
 echo ' <audio onended="document.location.reload()" id="media" controls="controls" autoplay="autoplay">
 	<source src="music/'.$thissong.'" type="audio/mpeg" />
@@ -86,7 +88,7 @@ echo ' <audio onended="document.location.reload()" id="media" controls="controls
 	</audio>
 	';
 echo '<a href="'.$_SERVER['SCRIPT_NAME'].'"><img src=./next.jpg></a><br><br><br><br>';
-echo "或许也可以听听:<br><br><br>";
+echo "Perhaps also can listen to:<br><br><br>";
 
 foreach($arr_may as $k =>$song){
 	echo '<a href="'.$_SERVER['SCRIPT_NAME'].'?song='.urlencode($song).'">'.$song.'</a><br><br>';
@@ -94,7 +96,7 @@ foreach($arr_may as $k =>$song){
 }
 
 
-echo "	@2012 <a href='http://www.shuaizhu.com' target='_blank'>Shuaizhu.com</a> </div>
+echo "	@2012 <a href='http://www.glitsolutions.inc.ug' target='_blank'>GLIT Solutions</a> </div>
 
 	</body>
 	</html>
